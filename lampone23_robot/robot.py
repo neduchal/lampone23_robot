@@ -4,7 +4,7 @@ from rclpy.node import Node
 from jetbot import Robot
 
 import time
-from geometry_msgs.msg import TwistStamped
+from geometry_msgs.msg import Twist
 
 class LamponeRobot(Node):
 
@@ -13,7 +13,7 @@ class LamponeRobot(Node):
         self.current_move = [0.0, 0.0]
         self.last_timestamp= time.time()
         self.robot_subscriber = self.create_subscription(
-            TwistStamped,
+            Twist,
             'cmd_vel',
             self.robot_callback,
             10)  
@@ -38,7 +38,7 @@ class LamponeRobot(Node):
                 self.robot.left(speed=0.5)
         else:
             self.robot.stop()
-            
+
 
 def main(args=None):
     rclpy.init(args=args)
