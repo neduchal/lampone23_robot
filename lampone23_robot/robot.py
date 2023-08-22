@@ -22,8 +22,8 @@ class LamponeRobot(Node):
         self.robot = Robot()
    
     def robot_callback(self, data):
-            self.current_move[0] = data.twist.linear.x
-            self.current_move[1] = 0.5 * data.twist.angular.z
+            self.current_move[0] = data.linear.x
+            self.current_move[1] = 0.5 * data.angular.z
             self.last_timestamp = time.time()
 
     def timer_callback(self):
