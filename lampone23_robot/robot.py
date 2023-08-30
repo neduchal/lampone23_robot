@@ -42,7 +42,7 @@ class LamponeRobot(Node):
             self.robot.set_motors(0, 0 )
         """
         print(self.current_move)
-        self.robot.set_motors(0.498 * self.current_move[0] + self.current_move[1], 0.502 * self.current_move[0] - self.current_move[1])
+        self.robot.set_motors(0.495 * self.current_move[0] + self.current_move[1], 0.505 * self.current_move[0] - self.current_move[1])
 
         #else:
         #    self.robot.stop()
