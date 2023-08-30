@@ -30,7 +30,7 @@ class LamponeRobot(Node):
         if (time.time() - self.last_timestamp) > 1:
             self.current_move = [0.0, 0.0]
         if self.current_move[0] != 0.0:
-            self.robot.set_motors(0.5 * self.current_move[0], 0.5 * self.current_move[0])
+            self.robot.set_motors(0.5 * self.current_move[0] + self.current_move[1], 0.5 * self.current_move[0] - self.current_move[1])
         elif self.current_move[1] != 0.0:
             if self.current_move[1] > 0:
                 self.robot.right(speed=0.5)
