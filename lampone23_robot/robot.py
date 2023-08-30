@@ -14,7 +14,7 @@ class LamponeRobot(Node):
         self.last_timestamp= time.time()
         self.robot_subscriber = self.create_subscription(
             Twist,
-            'cmd_vel',
+            '/cmd_vel',
             self.robot_callback,
             10)  
         timer_period = 0.1  # seconds
@@ -22,6 +22,7 @@ class LamponeRobot(Node):
         self.robot = Robot()
    
     def robot_callback(self, data):
+            print(data)
             self.current_move[0] = data.linear.x
             self.current_move[1] = 0.5 * data.angular.z
             self.last_timestamp = time.time()
