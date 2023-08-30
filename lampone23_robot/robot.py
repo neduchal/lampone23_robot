@@ -17,7 +17,7 @@ class LamponeRobot(Node):
             '/cmd_vel',
             self.robot_callback,
             10)  
-        timer_period = 0.1  # seconds
+        timer_period = 0.05  # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.robot = Robot()
    
@@ -28,7 +28,6 @@ class LamponeRobot(Node):
             self.last_timestamp = time.time()
 
     def timer_callback(self):
-
         if (time.time() - self.last_timestamp) > 1:
             self.current_move = [0.0, 0.0]
         if self.current_move[0] != 0.0:
