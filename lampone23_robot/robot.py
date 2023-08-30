@@ -38,7 +38,10 @@ class LamponeRobot(Node):
             elif self.current_move[1] < 0:
                 self.robot.left(speed=0.5)
         else:
-            self.robot.stop()
+            self.robot.set_motors(0, 0 )
+
+        #else:
+        #    self.robot.stop()
 
 
 def main(args=None):
