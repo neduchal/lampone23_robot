@@ -22,7 +22,7 @@ class LamponeRobot(Node):
         self.robot = Robot()
    
     def robot_callback(self, data):
-            print(data)
+
             self.current_move[0] = data.linear.x
             self.current_move[1] = 0.5 * data.angular.z
             self.last_timestamp = time.time()
@@ -30,6 +30,7 @@ class LamponeRobot(Node):
     def timer_callback(self):
         if (time.time() - self.last_timestamp) > 1:
             self.current_move = [0.0, 0.0]
+        """
         if self.current_move[0] != 0.0:
             self.robot.set_motors(0.5 * self.current_move[0], 0.5 * self.current_move[0])
         elif self.current_move[1] != 0.0:
@@ -39,6 +40,9 @@ class LamponeRobot(Node):
                 self.robot.left(speed=0.5)
         else:
             self.robot.set_motors(0, 0 )
+        """
+        print(self.current_move)
+        self.robot.set_motors(0.5 * self.current_move[0] + self.current_move[1], 0.5 * self.current_move[0] - self.current_move[1])
 
         #else:
         #    self.robot.stop()
